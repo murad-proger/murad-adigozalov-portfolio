@@ -1,6 +1,6 @@
 # Murad Adigozalov — Developer Portfolio
 
-A fast, accessible, dark-themed portfolio built with **Next.js 16**, **TypeScript (strict)**, and **Tailwind CSS v4** — statically generated, deployed on Vercel, and scoring **100/100/100/100** on desktop Lighthouse.
+A fast, accessible, light-themed portfolio built with **Next.js 16**, **TypeScript (strict)**, and **Tailwind CSS v4** — statically generated, deployed on Vercel, and scoring **100 / 100 / 100 / 100** on desktop Lighthouse (measured locally on a production build).
 
 **Live:** [murad-adigozalov-portfolio.vercel.app](https://murad-adigozalov-portfolio.vercel.app)
 
@@ -8,14 +8,14 @@ A fast, accessible, dark-themed portfolio built with **Next.js 16**, **TypeScrip
 
 ## Features
 
-- **Single-page home** — hero with staggered entrance animation, featured projects, experience & education, skills, highlights, and contact, in one scroll
-- **Project case studies** — statically generated `/projects/[slug]` pages covering the problem, solution, architecture reasoning, and tech stack of each project, with per-page Open Graph metadata
-- **Category filtering** — tabbed filters for projects (All / Backend / Frontend) and skills (six categories with brand logos), built on one shared, accessible tab component
+- **Single-page home** — hero with CSS entrance animation, tech marquee, featured projects, experience & education, skills, and contact, in one scroll
+- **Project case studies** — statically generated `/projects/[slug]` pages covering the problem, solution, and tech stack of each project, with per-page Open Graph metadata
+- **Tech marquee** — seamless CSS-animated ticker showcasing core technologies, with smooth edge masking, pause on hover, and full `prefers-reduced-motion` support
 - **Working contact & feedback forms** — server actions deliver submissions straight to email via [Resend](https://resend.com), with Zod validation, a honeypot field, per-IP rate limiting, and toast confirmations
 - **Scroll-spy navigation** — a single `IntersectionObserver` highlights the active section link while scrolling
 - **SEO-complete** — metadata with title templates, Open Graph/Twitter cards, JSON-LD `Person` schema, `sitemap.xml`, and `robots.txt`
-- **Accessible by default** — WCAG AA contrast, full keyboard navigation, ARIA tab semantics, and `prefers-reduced-motion` support that disables every animation
-- **Fully responsive** — from 360px phones (circular avatar hero, boxed tab cells, hamburger menu) to wide desktops
+- **Accessible by default** — WCAG AA contrast, full keyboard navigation, and `prefers-reduced-motion` support that disables animations
+- **Fully responsive** — from 360px phones (circular avatar hero, hamburger menu) to wide desktops
 
 ## Tech Stack
 
@@ -25,7 +25,7 @@ A fast, accessible, dark-themed portfolio built with **Next.js 16**, **TypeScrip
 | Language   | TypeScript (strict)     | `noUncheckedIndexedAccess` + `noImplicitOverride`; no `any` anywhere |
 | Styling    | Tailwind CSS v4         | CSS-first `@theme` tokens; design system as CSS variables            |
 | Components | shadcn/ui               | Accessible primitives themed by the same token set                   |
-| Animation  | Motion (framer-motion)  | Transform/opacity-only animations, reduced-motion aware              |
+| Animation  | Pure CSS                | Transform/opacity keyframes, transitions, reduced-motion aware       |
 | Email      | Resend                  | Contact/feedback delivery from server actions, no database needed    |
 | Validation | Zod                     | Input validation at the server boundary                              |
 | Hosting    | Vercel                  | Static output at the edge, image optimization, preview deploys       |
@@ -34,7 +34,7 @@ A fast, accessible, dark-themed portfolio built with **Next.js 16**, **TypeScrip
 
 ### Content as typed data
 
-All site content lives in [`src/content/`](src/content/) as typed constants — projects, experience, education, skills, achievements, and profile data share one source of truth with the types in [`types.ts`](src/content/types.ts). Pages and components render from this layer, so a content edit is a one-file change and the compiler catches every missing field.
+All site content lives in [`src/content/`](src/content/) as typed constants — projects, experience, education, skills, and profile data share one source of truth with the types in [`types.ts`](src/content/types.ts). Pages and components render from this layer, so a content edit is a one-file change and the compiler catches every missing field.
 
 ### Static generation
 
@@ -55,14 +55,16 @@ client form → server action → zod validation → honeypot check → rate lim
 
 ### Design system
 
-The visual language is defined once in [`globals.css`](src/app/globals.css): a dark-only palette fed into shadcn's semantic variables (emerald `--primary` on `#0a0e14`), four self-hosted fonts via `next/font` (Manrope, Inter, JetBrains Mono, Instrument Serif), and a single emerald→cyan gradient restricted to three uses — the hero accent word, primary buttons, and active/heading underlines.
+The visual language is defined in [`globals.css`](src/app/globals.css): a warm, light palette (`--background: #f1f2ee`, `--foreground: #252a26`, `--surface: #fff`, `--border: #dcdfd9`), neutral graphite `--primary: rgb(60, 60, 63)`, and clean typography powered by **Inter** via `next/font`.
 
 ### Performance & accessibility
 
-- Animations touch only `transform` and `opacity`; LCP-critical hero elements are painted from the first frame and never start at `opacity: 0`
+- Animations touch only `transform` and `opacity`; LCP-critical hero elements are painted from the first frame
 - The headshot is the LCP image: `next/image` with `priority` and exact `sizes`
-- `prefers-reduced-motion` collapses every entrance, marquee, and pulse to a static state
-- Lighthouse (production): **desktop 100 / 100 / 100 / 100**, mobile 100 accessibility · 100 best practices · 100 SEO
+- `prefers-reduced-motion` disables animations and unwraps the tech marquee into a static layout
+- Lighthouse scores (measured locally on a production build via `npm run build && npm start`):
+  - **Desktop:** **100** Performance · **100** Accessibility · **100** Best Practices · **100** SEO
+  - **Mobile:** **88** Performance · **100** Accessibility · **100** Best Practices · **100** SEO
 
 ## Project Structure
 
@@ -74,15 +76,17 @@ src/
 │   ├── layout.tsx                # fonts, metadata, JSON-LD, shell
 │   ├── page.tsx                  # home — section composition
 │   ├── sitemap.ts / robots.ts    # generated SEO routes
-│   └── globals.css               # design tokens + keyframe decorations
+│   └── globals.css               # design tokens + keyframes
 ├── components/
 │   ├── layout/                   # navbar (scroll-spy, mobile menu), footer
-│   ├── sections/                 # hero, projects, experience-education, …
-│   ├── motion/reveal.tsx         # shared scroll-reveal wrapper
-│   ├── pill-tabs.tsx             # shared accessible tab switcher
-│   └── ui/                       # shadcn primitives
+│   ├── sections/                 # hero, tech-marquee, projects, experience-education, skills, contact
+│   ├── ui/                       # input, textarea, sonner
+│   ├── feedback-form.tsx         # feedback form component
+│   ├── project-card.tsx          # project card component
+│   ├── screenshot-gallery.tsx    # modal screenshot gallery
+│   └── whatsapp-button.tsx       # floating quick-contact button
 ├── content/                      # typed site content (single source of truth)
-└── lib/                          # site constants, scroll helper, cn
+└── lib/                          # site constants, scroll helper, utils
 ```
 
 ## Getting Started
@@ -90,8 +94,8 @@ src/
 **Prerequisites:** Node.js 20+
 
 ```bash
-git clone https://github.com/murad-proger/my-portfolio.git
-cd my-portfolio
+git clone https://github.com/murad-proger/murad-adigozalov-portfolio.git
+cd murad-adigozalov-portfolio
 npm install
 cp .env.example .env   # then fill in the values below
 npm run dev
