@@ -1,0 +1,63 @@
+import type { Experience } from "./types";
+
+export const experiences: Experience[] = [
+  {
+    role: "Frontend Developer",
+    company: "Oweb Solutions",
+    location: "Remote",
+    startDate: "Feb 2020",
+    endDate: "Mar 2025",
+    techStack: [
+      "React",
+      "JavaScript",
+      "jQuery",
+      "HTML5",
+      "CSS3",
+      "SCSS",
+      "CSS Modules",
+      "REST API",
+      "Axios",
+      "Redux",
+      "Swiper API",
+      "Fancybox",
+      "Yandex Maps API",
+      "Technical SEO",
+      "Schema.org",
+      "Git",
+    ],
+    highlights: [
+      "Sole frontend developer on 20+ projects (most under NDA): e-commerce, corporate sites, and web apps. Owned frontend architecture, responsive behavior, API integration with the backend team, and technical decisions from Figma to production.",
+      "Rozetki.su: raised Google PageSpeed from 57 to 92 (Desktop) via CSS/JS/HTML optimization and lazy loading; rebuilt the outlet configurator in React with dynamic product variants; implemented technical SEO (semantic HTML, metadata, breadcrumbs, Schema.org).",
+      "KrymKing: redesigned the rental platform's form and date-picker UX, lifting bookings by ~12% on average and cutting booking completion time by ~30%; built a custom Yandex Maps integration with interactive property markers; responsive down to 320px.",
+      "Cryomont: built a flagship brand site from scratch with custom full-page scrolling in vanilla JS (mouse, keyboard, touch), custom sliders on the Swiper API, UI animations, and an interactive SVG map of Russia with region/city tooltips.",
+      "AKmarket40: built an e-commerce site from scratch with a custom drag-and-drop product comparison interface; site traffic and average time-on-site grew ~20% after launch (per Yandex Metrica).",
+      "AltoCar: built React components for subscriptions, discount-day management, and points tracking/redemption; the new points/discount UI cut related support inquiries by ~32% (per support team data).",
+      "Improved accessibility with semantic HTML/ARIA, mentored an intern, advised designers on technical constraints and reusable components, and worked in a team Git flow with pull requests and code review.",
+    ],
+  },
+
+  {
+    role: "Frontend Developer",
+    company: "Freelance",
+    location: "Remote",
+    engagement: "Freelance",
+    startDate: "Jan 2018",
+    endDate: "Feb 2020",
+    techStack: [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "jQuery",
+      "React",
+      "TypeScript",
+      "Yandex Maps API",
+      "REST API",
+    ],
+    highlights: [
+      "Built responsive user interfaces for commercial web and mobile projects with HTML5, CSS3, JavaScript, jQuery, React, and TypeScript.",
+      "Developed nearest-car search using the Yandex Maps API.",
+      "Integrated the client side with REST APIs and worked with backend developers on data exchange.",
+      "Maintained and extended existing projects: fixed bugs, shipped new features, and improved user experience.",
+    ],
+  },
+];

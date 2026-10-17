@@ -1,0 +1,106 @@
+import type { SkillGroup } from "./types";
+
+export const skillGroups: SkillGroup[] = [
+  {
+    title: "Languages & Core",
+    skills: [
+      "JavaScript",
+      "TypeScript",
+      "HTML5",
+      "CSS3",
+      "SCSS",
+      "CSS Modules",
+      "Tailwind CSS",
+      "SQL",
+    ],
+  },
+  {
+    title: "Frontend Frameworks & Architecture",
+    skills: [
+      "React",
+      "Next.js",
+      "Vite",
+      "SPA",
+      "Micro-Frontends",
+      "Component-Driven Design",
+      "Server Components",
+      "Server Actions",
+      "SSR",
+    ],
+  },
+  {
+    title: "State Management & Data Fetching",
+    skills: [
+      "Redux Toolkit",
+      "TanStack Query",
+      "Context API",
+      "Axios",
+      "REST APIs",
+      "OpenAPI/Swagger",
+    ],
+  },
+  {
+    title: "UI Engineering & Design Systems",
+    skills: [
+      "Radix UI",
+      "shadcn/ui",
+      "Ant Design",
+      "React Hook Form",
+      "Zod",
+      "Swiper",
+      "CSS Animations",
+      "Canvas & SVG",
+      "Yandex Maps API",
+    ],
+  },
+  {
+    title: "Backend & Integrations",
+    skills: [
+      "Node.js",
+      "Prisma ORM",
+      "PostgreSQL",
+      "Supabase",
+      "Auth.js",
+      "Stripe",
+      "Webhooks",
+      "JWT Authentication",
+    ],
+  },
+  {
+    title: "Testing & Code Quality",
+    skills: [
+      "Vitest",
+      "Jest",
+      "React Testing Library",
+      "Unit Testing",
+      "Integration Testing",
+      "Cross-Browser Compatibility",
+      "ESLint",
+      "Prettier",
+    ],
+  },
+  {
+    title: "Performance & SEO",
+    skills: [
+      "Web Vitals",
+      "PageSpeed Optimization",
+      "Bundle Size Optimization",
+      "Technical SEO",
+      "Semantic HTML",
+      "Schema.org",
+    ],
+  },
+  {
+    title: "Tools & DevOps",
+    skills: [
+      "Git",
+      "GitHub",
+      "GitHub Actions",
+      "Docker",
+      "CI/CD",
+      "Vercel",
+      "npm",
+      "Claude Code",
+    ],
+  },
+];

@@ -1,0 +1,186 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@theme inline {
+  --font-sans: var(--font-body);
+  --font-heading: var(--font-body);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-card: var(--card);
+  --color-popover: var(--popover);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-link: var(--color-primary);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) * 0.75);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) * 1.5);
+  --radius-xl: calc(var(--radius) * 2);
+  --radius-2xl: calc(var(--radius) * 3);
+}
+
+:root {
+  --background: #f1f2ee;
+  --foreground: #252a26;
+  --surface: #fff;
+  --surface-2: #eaebe7;
+  --card: var(--background);
+  --popover: var(--background);
+  --popover-foreground: var(--foreground);
+  --primary: rgb(60, 60, 63);
+  --secondary: var(--surface);
+  --muted: var(--surface);
+  --muted-foreground: #5a615b;
+  --accent: var(--surface);
+  --destructive: #b42318;
+  --border: #dcdfd9;
+  --border-strong: #b4bab2;
+  --ring: var(--primary);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+
+  h1,h2,h3 {
+    font-family: var(--font-heading), Georgia, serif;
+    font-weight: 500;
+    color: var(--color-primary);
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: #cfe5d9;
+  }
+}
+
+@layer components {
+  .link {
+    position: relative;
+    display: inline-block;
+    color: var(--primary);
+    line-height: 1.7;
+    text-decoration-thickness: 1px;
+    border-radius: var(--radius-sm);
+    padding: 0 .25rem;
+    z-index: 1;
+    transition: color 0.3s linear;
+  }
+
+  .link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--primary);
+    border-radius: inherit;
+    z-index: -1;
+    transition: width 0.3s linear;
+  }
+
+  .link:hover {
+    color: white;
+  }
+
+  .link:hover::before {
+    width: 100%;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: 1px solid transparent;
+    border-radius: var(--radius-lg);
+    padding: 0.6rem 1.1rem;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    line-height: 1.25;
+    white-space: nowrap;
+    transition:
+      background-color 0.15s,
+      border-color 0.15s,
+      color 0.15s;
+    cursor: pointer;
+  }
+
+  .btn-solid {
+    background-color: var(--color-primary);
+    color: var(--color-surface)
+  }
+
+  .btn-solid:hover {
+    background: var(--foreground);
+  }
+
+  .btn-line {
+    border-color: var(--border-strong);
+  }
+
+  .btn-line:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+
+  .btn:disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  .profile-photo {
+    transition: box-shadow 0.3s linear;
+  }
+
+  .profile-photo:hover {
+    border: none;
+    border-width: 0;
+    box-shadow: 0 0 8px 0 var(--foreground)
+  }
+}
+
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hero-in {
+  animation: hero-in 0.6s cubic-bezier(0.22, 0.8, 0.35, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-in {
+    animation: none;
+  }
+}
