@@ -4,7 +4,6 @@ export const projects: Project[] = [
   {
     title: "BookNest",
     slug: "booknest",
-    categories: ["frontend", "backend"],
     summary:
       "Fullstack online bookstore with a storefront, an admin panel, and a complete Stripe payment lifecycle, covered by automated tests and a CI/CD pipeline.",
     description:

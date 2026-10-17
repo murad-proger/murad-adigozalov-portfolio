@@ -1,9 +1,6 @@
-export type ProjectCategory = "frontend" | "backend";
-
 export type Project = {
   title: string;
   slug: string;
-  categories: ProjectCategory[];
   summary: string;
   description: string;
   problem: string;
