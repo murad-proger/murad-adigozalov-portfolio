@@ -179,8 +179,104 @@
   animation: hero-in 0.6s cubic-bezier(0.22, 0.8, 0.35, 1) both;
 }
 
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.tech-marquee {
+  position: relative;
+  width: 100%;
+  height: 2.75rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+}
+
+.tech-marquee-inner {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-scroll 25s linear infinite;
+}
+
+.tech-marquee:hover .tech-marquee-inner {
+  animation-play-state: paused;
+}
+
+.tech-marquee-track {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.tech-marquee-item {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.tech-marquee-separator {
+  margin: 0 1.5rem;
+  opacity: 0.4;
+  user-select: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-in {
     animation: none;
+  }
+
+  .tech-marquee {
+    height: auto;
+    padding: 0.75rem 1rem;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+
+  .tech-marquee-inner {
+    animation: none;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .tech-marquee:hover .tech-marquee-inner {
+    animation-play-state: running;
+  }
+
+  .tech-marquee-track {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 0.5rem;
+  }
+
+  .tech-marquee-track[aria-hidden="true"] {
+    display: none;
+  }
+
+  .tech-marquee-separator {
+    margin: 0 0.75rem;
   }
 }

@@ -1,4 +1,5 @@
 import { Hero } from "../components/sections/hero";
+import { TechMarquee } from "../components/sections/tech-marquee";
 import { ProjectsSection } from "../components/sections/projects";
 import {
   ExperienceSection,
@@ -11,6 +12,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <TechMarquee />
       <ProjectsSection />
       <ExperienceSection />
       <EducationSection />
