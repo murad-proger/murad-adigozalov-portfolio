@@ -51,14 +51,14 @@ export function Hero() {
         </p>
       </div>
 
-      <div className="profile-photo bg-surface relative order-first aspect-square w-28 overflow-hidden rounded-sm md:order-last md:aspect-4/5 md:w-full">
+      <div className="profile-photo bg-surface relative order-first aspect-square w-28 overflow-hidden rounded-full md:order-last md:aspect-4/5 md:w-full md:rounded-sm">
         <Image
           src="/images/Head_shot_professional.jpg"
           alt="Murad Adigozalov"
           fill
           priority
           sizes="(max-width: 768px) 112px, 272px"
-          className="object-cover"
+          className="object-cover object-top"
         />
       </div>
     </section>
