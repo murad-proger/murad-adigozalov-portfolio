@@ -10,7 +10,7 @@ import "./globals.css";
 
 const sans = Inter({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-body",
   display: "swap",
 });
 
