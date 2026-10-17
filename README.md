@@ -1,6 +1,6 @@
 # Murad Adigozalov — Developer Portfolio
 
-A fast, accessible, light-themed portfolio built with **Next.js 16**, **TypeScript (strict)**, and **Tailwind CSS v4** — statically generated, deployed on Vercel, and scoring **100 / 100 / 100 / 100** on desktop Lighthouse (measured locally on a production build).
+A fast, accessible, light-themed portfolio built with **Next.js 16**, **TypeScript (strict)**, and **Tailwind CSS v4** — statically generated, deployed on Vercel, and scoring **100 / 100 / 100 / 100** on Lighthouse for both mobile and desktop.
 
 **Live:** [murad-adigozalov-portfolio.vercel.app](https://murad-adigozalov-portfolio.vercel.app)
 
@@ -10,7 +10,7 @@ A fast, accessible, light-themed portfolio built with **Next.js 16**, **TypeScri
 
 - **Single-page home** — hero with CSS entrance animation, tech marquee, featured projects, experience & education, skills, and contact, in one scroll
 - **Project case studies** — statically generated `/projects/[slug]` pages covering the problem, solution, and tech stack of each project, with per-page Open Graph metadata
-- **Tech marquee** — seamless CSS-animated ticker showcasing core technologies, with smooth edge masking, pause on hover, and full `prefers-reduced-motion` support
+- **Tech marquee** — seamless CSS-animated ticker showcasing core technologies, with soft edge fades, pause on hover, and full `prefers-reduced-motion` support
 - **Working contact & feedback forms** — server actions deliver submissions straight to email via [Resend](https://resend.com), with Zod validation, a honeypot field, per-IP rate limiting, and toast confirmations
 - **Scroll-spy navigation** — a single `IntersectionObserver` highlights the active section link while scrolling
 - **SEO-complete** — metadata with title templates, Open Graph/Twitter cards, JSON-LD `Person` schema, `sitemap.xml`, and `robots.txt`
@@ -49,7 +49,7 @@ client form → server action → zod validation → honeypot check → rate lim
 ```
 
 - **Honeypot** — a hidden field real users never fill; bots that do receive a fake success and nothing sends
-- **Rate limiting** — 3 submissions per hour per IP, kept in memory
+- **Rate limiting** — 3 submissions per hour per IP, kept in memory (a lightweight, best-effort guard on serverless)
 - **Unique subjects** — each email is titled `Portfolio - CONTACT — <name>` (or `- FEEDBACK — <project> — <name>`) so inbox threads never merge
 - The API key exists only in server environment variables; nothing email-related reaches the client bundle
 
@@ -62,9 +62,9 @@ The visual language is defined in [`globals.css`](src/app/globals.css): a warm, 
 - Animations touch only `transform` and `opacity`; LCP-critical hero elements are painted from the first frame
 - The headshot is the LCP image: `next/image` with `priority` and exact `sizes`
 - `prefers-reduced-motion` disables animations and unwraps the tech marquee into a static layout
-- Lighthouse scores (measured locally on a production build via `npm run build && npm start`):
+- Lighthouse scores on the live deployment (PageSpeed Insights):
+  - **Mobile:** **100** Performance · **100** Accessibility · **100** Best Practices · **100** SEO
   - **Desktop:** **100** Performance · **100** Accessibility · **100** Best Practices · **100** SEO
-  - **Mobile:** **88** Performance · **100** Accessibility · **100** Best Practices · **100** SEO
 
 ## Project Structure
 
@@ -123,7 +123,9 @@ Without the key the site runs fully — form submissions surface a graceful erro
 
 ## Deployment
 
-Pushing to `main` triggers an automatic Vercel deployment. The only required production setting is the `RESEND_API_KEY` environment variable in the Vercel dashboard.
+Pushing to `main` triggers an automatic Vercel deployment. The only required production setting is the `RESEND_API_KEY` environment variable in the Vercel dashboard (redeploy after adding or changing it).
+
+Emails are sent from Resend's shared test sender (`onboarding@resend.dev`), which delivers only to the address of the Resend account owner. To send from your own address, verify a domain in Resend and update the `from` field in [`send-email.ts`](src/app/actions/send-email.ts).
 
 ## Contact
 
