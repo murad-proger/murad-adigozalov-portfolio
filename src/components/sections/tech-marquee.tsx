@@ -1,14 +1,16 @@
 import { profile } from "../../content/profile";
 
-// REPEAT = 3 ensures each track is >= 2560px wide (10 items ~1244px * 3 ~ 3732px),
-// preventing any visible gap on ultra-wide screens (up to 2560px+) when the marquee
-// shifts to -50% at the end of its loop.
 const REPEAT = 3;
 
 export function TechMarquee() {
   const items = profile.techMarquee;
 
   return (
+    <section>
+      <p className="mb-5 text-center text-xs tracking-widest">
+        TECHNOLOGIES I WORK WITH
+      </p>
+
     <div
       aria-label="Technologies"
       className="tech-marquee bg-surface border-border text-muted-foreground border-t"
@@ -61,5 +63,6 @@ export function TechMarquee() {
         </div>
       </div>
     </div>
+    </section>
   );
 }
