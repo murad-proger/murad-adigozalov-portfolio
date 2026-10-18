@@ -53,7 +53,7 @@ export function Hero() {
 
       <div className="profile-photo bg-surface relative order-first aspect-square w-28 overflow-hidden rounded-full md:order-last md:aspect-4/5 md:w-full md:rounded-sm">
         <Image
-          src="/images/Head_shot_professional.jpg"
+          src="/images/profile-desctop.avif"
           alt="Murad Adigozalov"
           fill
           priority

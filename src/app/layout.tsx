@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     description: siteDescription,
     images: [
       {
-        url: "/images/Head_shot_professional.jpg",
+        url: "/images/preview.jpg",
         width: 1254,
         height: 1254,
         alt: "Murad Adigozalov",

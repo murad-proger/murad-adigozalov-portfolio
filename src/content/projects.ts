@@ -35,10 +35,10 @@ export const projects: Project[] = [
     ],
     liveUrl: "https://murad-booknest.vercel.app/",
     githubUrl: "https://github.com/murad-proger/booknest",
-    coverImage: "/images/booknest/booknest-main.jpg",
+    coverImage: "/images/booknest/booknest-main.avif",
     images: [
-      "/images/booknest/booknest-catalog.jpg",
-      "/images/booknest/booknest-cart.png",
+      "/images/booknest/booknest-catalog.avif",
+      "/images/booknest/booknest-cart.avif",
     ],
     featured: true,
     order: 0,
