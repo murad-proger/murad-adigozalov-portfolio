@@ -151,7 +151,13 @@ export default async function ProjectPage({
       )}
 
       <CaseSection title="Tech stack">
-        <p>{project.techStack.join(", ")}</p>
+        <ul className="tech-tags mt-3">
+          {project.techStack.map((tech) => (
+            <li key={tech} className="tech-tag">
+              {tech}
+            </li>
+          ))}
+        </ul>
       </CaseSection>
 
       {gallery.length > 0 && (

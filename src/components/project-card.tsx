@@ -66,9 +66,13 @@ export function ProjectCard({ project }: { project: Project }) {
       <p className="text-muted-foreground mt-2 max-w-[40rem]">
         {project.summary}
       </p>
-      <p className="text-muted-foreground mt-3 text-[0.9375rem]">
-        {project.techStack.join(", ")}
-      </p>
+      <ul className="tech-tags mt-3">
+        {project.techStack.map((tech) => (
+          <li key={tech} className="tech-tag">
+            {tech}
+          </li>
+        ))}
+      </ul>
     </article>
   );
 }

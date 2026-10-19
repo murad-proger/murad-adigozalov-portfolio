@@ -163,6 +163,22 @@
     border-width: 0;
     box-shadow: 0 0 8px 0 var(--foreground);
   }
+
+  .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tech-tag {
+    background: var(--surface);
+    box-shadow: 0 0 2px 0 var(--border-strong);
+    border-radius: 8px;
+    padding: 0.125rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--muted-foreground);
+  }
 }
 
 @keyframes hero-in {
