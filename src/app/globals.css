@@ -230,10 +230,14 @@
   width: max-content;
   will-change: transform;
   /*
-   * Each track with REPEAT=3 is ~3732px wide.
-   * 3732px / 50px/s ≈ 75s maintains a smooth ~50px/s scroll speed.
+   * Scroll speed = track width / animation duration.
+   * Track width depends on the number of items in profile.techMarquee
+   * and on REPEAT in tech-marquee.tsx, so retune the duration whenever
+   * either changes. Measure the real width in DevTools:
+   * document.querySelector(".tech-marquee-track").offsetWidth
+   * Example: 35 items, REPEAT=3 -> track ≈ 14,000px; 280s ≈ 50px/s.
    */
-  animation: marquee-scroll 75s linear infinite;
+  animation: marquee-scroll 280s linear infinite;
 }
 
 .tech-marquee:hover .tech-marquee-inner {
